@@ -14,7 +14,8 @@ const initialValues = {
   email: STRING_DATA.EMPTY,
   password: STRING_DATA.EMPTY,
 };
-const Login: React.FC = () => {
+
+const Register: React.FC = () => {
   const handleRegister = (values: any) => {
     console.log(values);
   };
@@ -28,7 +29,7 @@ const Login: React.FC = () => {
         >
           <div className="flex flex-col gap-4 ">
             <h2 className="custom-h2-class text-center text-3xl">
-              {STRING_DATA.LOGIN}
+              {STRING_DATA.REGISTER}
             </h2>
             <TextField
               type="text"
@@ -44,7 +45,7 @@ const Login: React.FC = () => {
             />
             <div className="flex justify-center items-center gap-4">
               <ActionButton
-                text={STRING_DATA.LOGIN.toUpperCase()}
+                text={STRING_DATA.CREATE_ACCOUNT.toUpperCase()}
                 isSubmit={true}
                 // isLoading={true}
               />
@@ -56,4 +57,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Register;

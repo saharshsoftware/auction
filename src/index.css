@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --brand-color: #FFCAD4;
+  --btn-red: #DC3545;
+  --action-btn-color: #FF407D;
+}
+
+body {
+  min-height: 100vh;
+  word-break: break-all;
+}
+
+body :focus:not(:focus-visible) {
+  outline: none;
+}
+
+body :focus-visible {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+
+.form-controls {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2;
+}
+
+.common-auth-section-class {
+  @apply mx-auto lg:w-2/5 md:w-1/2 sm:w-3/5  w-4/5 pt-24
+}
+
+.custom-action-button-class {
+  @apply min-w-[100px] rounded-md
+}

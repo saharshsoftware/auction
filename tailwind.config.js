@@ -6,7 +6,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'brand-color': 'var(--brand-color)',
+        'btn-red': 'var(--btn-red)',
+        'action-btn': 'var(--action-btn-color)'
+      },
+      container: {
+        center: true,
+      },
+      screens: {
+        "772px": "772"
+      }
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
