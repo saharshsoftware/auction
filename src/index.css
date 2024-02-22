@@ -7,6 +7,7 @@
   --btn-red: #DC3545;
   --action-btn-color: #0B60B0;
   --badge-color: #d7dbe9;
+  --button-hover-color: #5ca1e2;
 }
 
 body {
@@ -19,6 +20,14 @@ body :focus:not(:focus-visible) {
 }
 
 body :focus-visible {
+  outline: none;
+}
+
+body :focus:not(:focus-within) {
+  outline: none;
+}
+
+body :focus-within {
   outline: none;
 }
 
@@ -47,28 +56,28 @@ body :focus-visible {
 }
 
 .custom-action-button-class {
-  @apply min-w-[100px] rounded-md
+  @apply min-w-[100px]
 }
 
 .custom-badge-class {
-  @apply bg-[var(--badge-color)] px-4 py-2 max-w-fit rounded-full text-black
+  @apply bg-[var(--badge-color)] px-4 py-2 max-w-fit rounded-full text-black min-w-fit cursor-pointer
 }
 
-.search {
-  background-color: #fff;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  width: 80vw;
-  min-width: 500px;
-  margin: 10%;
-  gap: 5px;
-  border-radius: 5px;
-}
 
 .select-dropdown {
-  height: 50px;
-  font-size: 16px;
+  @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-4 hover:shadow hover:bg-gray-100 h-8 
+}
+
+.select-dropdown:focus-visible {
+  outline: none !important;
+  border-color: rgb(209, 213, 219) !important;
+  box-shadow: none !important;
+}
+
+.select-dropdown:focus-within {
+  outline: none !important;
+  border-color: rgb(209, 213, 219) !important;
+  box-shadow: none !important;
 }
 
 .selected-text {
@@ -78,8 +87,7 @@ body :focus-visible {
 }
 
 .react-dropdown-select-content {
-  margin-left: 5px;
-  font-size: 20px;
+  @apply text-base 
 }
 
 .react-dropdown-select-dropdown {
@@ -88,4 +96,8 @@ body :focus-visible {
 
 .nav-link-class {
   @apply py-2 cursor-pointer w-full text-center
+}
+
+.btn:hover {
+  @apply bg-[var(--button-hover-color)]
 }

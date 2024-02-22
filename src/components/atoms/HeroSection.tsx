@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
       }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
-      <div className="hero-content text-center text-neutral-content lg:w-[760px] md:[720px] w-11/12">
+      <div className="hero-content text-center text-neutral-content lg:w-[920px] md:w-[720px] w-11/12">
         <div className="w-full">
           <HeroSearchBox />
         </div>

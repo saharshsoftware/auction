@@ -6,7 +6,7 @@ interface ICustomFormikForm {
   validationSchema?: any;
   handleSubmit: any;
   children: any;
-  formikEvent?: Function;
+  wantToUseFormikEvent?: boolean;
 }
 
 const CustomFormikForm: React.FC<ICustomFormikForm> = (props) => {
@@ -15,12 +15,14 @@ const CustomFormikForm: React.FC<ICustomFormikForm> = (props) => {
     validationSchema,
     handleSubmit,
     children,
-    formikEvent,
+    wantToUseFormikEvent = false,
   } = props;
-  const handleFormikEvent = (formikProps: any) => {
-    if (formikEvent) {
-      formikEvent(formikProps);
+
+  const renderData = () => {
+    if (wantToUseFormikEvent) {
+      return children;
     }
+    return <Form>{children}</Form>;
   };
   return (
     <>
@@ -29,10 +31,7 @@ const CustomFormikForm: React.FC<ICustomFormikForm> = (props) => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {(formikProps) => {
-          handleFormikEvent(formikProps);
-          return <Form>{children}</Form>;
-        }}
+        {renderData()}
       </Formik>
     </>
   );

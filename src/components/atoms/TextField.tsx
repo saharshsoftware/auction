@@ -1,7 +1,7 @@
 import { ErrorMessage, FieldHookConfig, useField } from "formik";
 
 interface ICustomInput {
-  type: "text" | "password" | "number" | "textarea";
+  type?: "text" | "password" | "number" | "textarea";
   placeholder?: string;
   name?: string;
   id?: string;
@@ -87,7 +87,7 @@ const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 w-full">
+    <div className="flex flex-col gap-2 w-full items-start">
       {label ? (
         <label
           htmlFor={name}

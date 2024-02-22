@@ -4,13 +4,14 @@ import { IReactSelectDropdown } from "../../interfaces/ReactDropdown";
 
 const ReactSelectDropdown: React.FC<IReactSelectDropdown> = (props) => {
   const {
-    dataF,
+    options,
     loading,
     noDataRenderer,
     itemRenderer,
     customClass,
     name = "",
     onChange = () => {},
+    placeholder,
   } = props;
 
   return (
@@ -19,7 +20,7 @@ const ReactSelectDropdown: React.FC<IReactSelectDropdown> = (props) => {
         <Select
           multi={false}
           className={`rounded select-dropdown ${customClass ?? ""}`}
-          options={dataF}
+          options={options}
           loading={loading}
           disabled={loading}
           searchBy="name"
@@ -30,7 +31,7 @@ const ReactSelectDropdown: React.FC<IReactSelectDropdown> = (props) => {
           values={[]}
           dropdownHandle={false}
           onChange={onChange}
-          placeholder={"Neighborhood, City or State"}
+          placeholder={placeholder}
           noDataRenderer={noDataRenderer}
           itemRenderer={itemRenderer}
         />

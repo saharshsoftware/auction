@@ -114,7 +114,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <div className="navbar bg-brand-color text-primary-content fixed top-0 z-50 min-h-24">
+      <div className="navbar bg-brand-color text-primary-content fixed top-0 z-50">
         <div className="flex flex-row items-center justify-between px-4 w-full">
           <div className="flex gap-8">
             <div
