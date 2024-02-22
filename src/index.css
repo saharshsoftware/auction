@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --brand-color: #FFCAD4;
+  --brand-color: #40A2D8;
   --btn-red: #DC3545;
-  --action-btn-color: #FF407D;
+  --action-btn-color: #0B60B0;
+  --badge-color: #d7dbe9;
 }
 
 body {
@@ -37,10 +38,54 @@ body :focus-visible {
   @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2;
 }
 
+.search-form-controls {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg block w-full p-4 hover:shadow hover:bg-gray-100
+}
+
 .common-auth-section-class {
-  @apply mx-auto lg:w-2/5 md:w-1/2 sm:w-3/5  w-4/5 pt-24
+  @apply mx-auto lg:w-2/5 md:w-1/2 sm:w-3/5  w-11/12 border md:p-8 p-4 shadow rounded-lg
 }
 
 .custom-action-button-class {
   @apply min-w-[100px] rounded-md
+}
+
+.custom-badge-class {
+  @apply bg-[var(--badge-color)] px-4 py-2 max-w-fit rounded-full text-black
+}
+
+.search {
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+  min-width: 500px;
+  margin: 10%;
+  gap: 5px;
+  border-radius: 5px;
+}
+
+.select-dropdown {
+  height: 50px;
+  font-size: 16px;
+}
+
+.selected-text {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.react-dropdown-select-content {
+  margin-left: 5px;
+  font-size: 20px;
+}
+
+.react-dropdown-select-dropdown {
+  width: 100% !important;
+}
+
+.nav-link-class {
+  @apply py-2 cursor-pointer w-full text-center
 }

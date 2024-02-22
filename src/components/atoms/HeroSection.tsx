@@ -1,5 +1,5 @@
 import React from "react";
-import ActionButton from "./ActionButton";
+import HeroSearchBox from "./HeroSearchBox";
 
 const HeroSection: React.FC = () => {
   return (
@@ -11,15 +11,9 @@ const HeroSection: React.FC = () => {
       }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
-      <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-          <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <ActionButton text={"Get Started"} />
+      <div className="hero-content text-center text-neutral-content lg:w-[760px] md:[720px] w-11/12">
+        <div className="w-full">
+          <HeroSearchBox />
         </div>
       </div>
     </div>

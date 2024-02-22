@@ -87,10 +87,15 @@ const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-900">
-        {label}
-      </label>
+    <div className="flex flex-col gap-2 w-full">
+      {label ? (
+        <label
+          htmlFor={name}
+          className="block text-sm font-medium text-gray-900"
+        >
+          {label}
+        </label>
+      ) : null}
 
       {renderData()}
 
