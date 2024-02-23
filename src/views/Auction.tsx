@@ -1,7 +1,12 @@
 import React from "react";
+import FindAuction from "../components/molecules/FindAuction";
 
 const Auction: React.FC = () => {
-  return <div>Auction</div>;
+  return (
+    <>
+      <FindAuction />
+    </>
+  );
 };
 
 export default Auction;

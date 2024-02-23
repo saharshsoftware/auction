@@ -9,6 +9,8 @@ export const STRING_DATA = {
   TAG_LINE: "Discover Exclusive Deals: Find Auctions Near You",
   POPULER_CITIES: "Populer Cities",
   AUCTION: "Auction",
+  UPDATE: "Update",
+  CANCEL: "Cancel"
 }
 
 export const ERROR_MESSAGE = {
@@ -17,7 +19,9 @@ export const ERROR_MESSAGE = {
   CATEGORY_REQUIRED: "Category is required",
   LOCATION_REQUIRED: "Location is required",  
   BANK_REQUIRED: "Bank is required",  
-  PRICE_REQUIRED: "Price is required"
+  PRICE_REQUIRED: "Price is required",
+  PRICE_POSITIVE: "Price must be a positive number",
+  PRICE_INTEGER: "Price must be an integer"
 }
 
 export const NAV_LINKS = [

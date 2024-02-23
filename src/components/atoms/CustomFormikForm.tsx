@@ -7,6 +7,8 @@ interface ICustomFormikForm {
   handleSubmit: any;
   children: any;
   wantToUseFormikEvent?: boolean;
+  formikRef?: any;
+  enableReinitialize?: boolean;
 }
 
 const CustomFormikForm: React.FC<ICustomFormikForm> = (props) => {
@@ -16,6 +18,8 @@ const CustomFormikForm: React.FC<ICustomFormikForm> = (props) => {
     handleSubmit,
     children,
     wantToUseFormikEvent = false,
+    formikRef,
+    enableReinitialize = false,
   } = props;
 
   const renderData = () => {
@@ -27,9 +31,11 @@ const CustomFormikForm: React.FC<ICustomFormikForm> = (props) => {
   return (
     <>
       <Formik
+        innerRef={formikRef}
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
+        enableReinitialize={enableReinitialize}
       >
         {renderData()}
       </Formik>

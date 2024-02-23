@@ -21,19 +21,22 @@ const AppLayout = (props: { children: React.ReactNode }) => {
         </>
       );
     }
-    return children;
+    return (
+      <div
+        className={`mt-16 ${
+          isAuthRoute ? "flex-1 flex items-center justify-center" : ""
+        } `}
+      >
+        {children}
+      </div>
+    );
   };
   return (
     <>
       <div className="flex flex-col h-screen">
         <Navbar />
-        <div
-          className={`mt-16 ${
-            isAuthRoute ? "flex-1 flex items-center justify-center" : ""
-          } `}
-        >
-          {renderChildren()}
-        </div>
+
+        {renderChildren()}
       </div>
     </>
   );

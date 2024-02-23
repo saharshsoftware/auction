@@ -15,12 +15,17 @@ import {
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_CONSTANTS } from "../../shared/Routes";
+import { ItemRenderer, NoDataRendererDropdown } from "./NoDataRendererDropdown";
+import { setDataInQueryParams } from "../../shared/Utilies";
 
 const validationSchema = Yup.object({
   category: Yup.string().trim().required(ERROR_MESSAGE.CATEGORY_REQUIRED),
   location: Yup.string().trim().required(ERROR_MESSAGE.LOCATION_REQUIRED),
   bank: Yup.string().trim().required(ERROR_MESSAGE.BANK_REQUIRED),
-  price: Yup.string().trim().required(ERROR_MESSAGE.PRICE_REQUIRED),
+  price: Yup.number()
+    .required(ERROR_MESSAGE.PRICE_REQUIRED)
+    .positive(ERROR_MESSAGE.PRICE_POSITIVE)
+    .integer(ERROR_MESSAGE.PRICE_INTEGER),
 });
 
 const initialValues = {
@@ -29,6 +34,8 @@ const initialValues = {
   bank: STRING_DATA.EMPTY,
   price: STRING_DATA.EMPTY,
 };
+
+const gridElementClass = () => "lg:col-span-6 col-span-full";
 
 const HeroSearchBox: React.FC = () => {
   const navigate = useNavigate();
@@ -48,46 +55,17 @@ const HeroSearchBox: React.FC = () => {
     setData(data);
     setLoading(false);
   }
-  const noDataRenderer = () => {
-    return (
-      <p className="text-center">
-        <strong>Ooops!</strong> No data found
-      </p>
-    );
-  };
-
-  const itemRenderer: any = ({
-    item,
-    props,
-    methods,
-  }: {
-    item: any;
-    itemIndex?: number;
-    props: any;
-    state?: any;
-    methods: any;
-  }) => {
-    return (
-      <div key={item[props.valueField]} onClick={() => methods.addItem(item)}>
-        <div className="m-2 text-left">
-          {item.emoji} {item[props.labelField]}
-        </div>
-      </div>
-    );
-  };
 
   const handleSubmit = (values: any) => {
-    console.log(values, "/Form Data received/");
-
-    navigate(ROUTE_CONSTANTS.AUCTION);
+    // console.log("/ Data received/", values);
+    const data = setDataInQueryParams(values);
+    // console.log("/ Encrypted/", data);
+    navigate(`${ROUTE_CONSTANTS.AUCTION}?q=${data}`);
   };
 
   return (
     <>
-      <div className="bg-white p-4 rounded-lg flex flex-col gap-4 relative pb-12">
-        <h2 className="custom-h2-class lg:text-[4vh] text-lg font-bold text-black  mb-4">
-          {STRING_DATA.TAG_LINE}
-        </h2>
+      <div className="bg-white p-4 rounded-lg flex flex-col gap-4 relative pb-12 shadow border">
         <CustomFormikForm
           initialValues={initialValues}
           handleSubmit={handleSubmit}
@@ -97,7 +75,7 @@ const HeroSearchBox: React.FC = () => {
           {({ setFieldValue }: any) => (
             <Form>
               <div className="grid gap-4 grid-cols-12 w-full ">
-                <div className="col-span-full">
+                <div className={gridElementClass()}>
                   <TextField
                     label={"Categories"}
                     name={"category"}
@@ -106,8 +84,8 @@ const HeroSearchBox: React.FC = () => {
                     <Field name="category">
                       {() => (
                         <ReactSelectDropdown
-                          noDataRenderer={noDataRenderer}
-                          itemRenderer={itemRenderer}
+                          noDataRenderer={NoDataRendererDropdown}
+                          itemRenderer={ItemRenderer}
                           options={CATEGORIES}
                           placeholder={"Category"}
                           customClass="w-full "
@@ -119,7 +97,7 @@ const HeroSearchBox: React.FC = () => {
                     </Field>
                   </TextField>
                 </div>
-                <div className="col-span-full">
+                <div className={gridElementClass()}>
                   <TextField
                     label={"Location (City & State)"}
                     name={"location"}
@@ -128,8 +106,8 @@ const HeroSearchBox: React.FC = () => {
                     <Field name="location">
                       {() => (
                         <ReactSelectDropdown
-                          noDataRenderer={noDataRenderer}
-                          itemRenderer={itemRenderer}
+                          noDataRenderer={NoDataRendererDropdown}
+                          itemRenderer={ItemRenderer}
                           loading={loading}
                           options={dataF}
                           placeholder={"Neighborhood, City or State"}
@@ -142,7 +120,7 @@ const HeroSearchBox: React.FC = () => {
                     </Field>
                   </TextField>
                 </div>
-                <div className="col-span-full">
+                <div className={gridElementClass()}>
                   <TextField
                     type="text"
                     name="bank"
@@ -150,7 +128,7 @@ const HeroSearchBox: React.FC = () => {
                     placeholder="Enter bank"
                   />
                 </div>
-                <div className="col-span-full">
+                <div className={gridElementClass()}>
                   <TextField
                     type="text"
                     name="price"

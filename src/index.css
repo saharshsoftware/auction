@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --brand-color: #40A2D8;
+  --brand-color: #0099FF;
   --btn-red: #DC3545;
   --action-btn-color: #0B60B0;
   --badge-color: #d7dbe9;
@@ -44,11 +44,11 @@ body :focus-within {
 }
 
 .form-controls {
-  @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2;
+  @apply bg-gray-50 border border-brand-color text-gray-900 sm:text-sm hover:shadow hover:bg-gray-100 block w-full p-2;
 }
 
 .search-form-controls {
-  @apply bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg block w-full p-4 hover:shadow hover:bg-gray-100
+  @apply bg-gray-50 border border-brand-color text-gray-900 text-lg rounded-lg block w-full p-4 hover:shadow hover:bg-gray-100
 }
 
 .common-auth-section-class {
@@ -65,18 +65,20 @@ body :focus-within {
 
 
 .select-dropdown {
-  @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-4 hover:shadow hover:bg-gray-100 h-8 
+  border-color: var(--brand-color) !important; 
+  border-radius: 0.5rem !important;
+  @apply bg-gray-50 border border-red-300 text-gray-900 sm:text-sm rounded-lg block w-full p-4 hover:shadow hover:bg-gray-100 h-8 
 }
 
 .select-dropdown:focus-visible {
   outline: none !important;
-  border-color: rgb(209, 213, 219) !important;
+  border-color: var(--brand-color) !important;
   box-shadow: none !important;
 }
 
 .select-dropdown:focus-within {
   outline: none !important;
-  border-color: rgb(209, 213, 219) !important;
+  border-color: var(--brand-color) !important;
   box-shadow: none !important;
 }
 
@@ -100,4 +102,8 @@ body :focus-within {
 
 .btn:hover {
   @apply bg-[var(--button-hover-color)]
+}
+
+.common-section {
+  @apply px-32
 }

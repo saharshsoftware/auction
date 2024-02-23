@@ -17,7 +17,10 @@ export default {
       },
       screens: {
         "772px": "772"
-      }
+      },
+      backgroundImage: {
+        'wave-image': "url('@/assets/wave.svg')", // Adjust the path as per your project structure
+      },
     },
   },
   plugins: [require("daisyui")],

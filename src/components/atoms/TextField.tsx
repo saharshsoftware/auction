@@ -14,6 +14,7 @@ interface ICustomInput {
   rows?: number;
   children?: React.ReactNode;
   hasChildren?: boolean;
+  value?: string;
 }
 
 const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
@@ -31,6 +32,7 @@ const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
     rows,
     children,
     hasChildren,
+    value,
   } = props;
   const [field] = useField(props);
 
@@ -45,6 +47,7 @@ const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
         field.onChange
       }
       disabled={disabled}
+      value={value}
       placeholder={placeholder}
       autoComplete={autoComplete}
       onBlur={
