@@ -105,5 +105,9 @@ body :focus-within {
 }
 
 .common-section {
-  @apply px-32
+  @apply lg:px-32 px-12
+}
+
+.custom-h2-class {
+  @apply text-xl font-bold
 }

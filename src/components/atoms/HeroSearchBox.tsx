@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ActionButton from "./ActionButton";
 import CustomBadge from "./CustomBadge";
 import ReactSelectDropdown from "./ReactSelectDropdown";
-import axios from "axios";
 import { Field, Form } from "formik";
 import CustomFormikForm from "./CustomFormikForm";
 import TextField from "./TextField";
@@ -10,13 +9,19 @@ import {
   CATEGORIES,
   ERROR_MESSAGE,
   POPULER_CITIES,
+  REACT_QUERY,
   STRING_DATA,
 } from "../../shared/Constants";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_CONSTANTS } from "../../shared/Routes";
 import { ItemRenderer, NoDataRendererDropdown } from "./NoDataRendererDropdown";
-import { setDataInQueryParams } from "../../shared/Utilies";
+import {
+  handleQueryResponse,
+  setDataInQueryParams,
+} from "../../shared/Utilies";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCountryData } from "../../services/landingPage";
 
 const validationSchema = Yup.object({
   category: Yup.string().trim().required(ERROR_MESSAGE.CATEGORY_REQUIRED),
@@ -39,27 +44,17 @@ const gridElementClass = () => "lg:col-span-6 col-span-full";
 
 const HeroSearchBox: React.FC = () => {
   const navigate = useNavigate();
-  const [dataF, setData] = useState<any>({});
-  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  async function fetchData() {
-    setLoading(true);
-    const { data } = await axios.get(
-      "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/countries%2Bstates%2Bcities.json"
-    );
-    console.log(data);
-    setData(data);
-    setLoading(false);
-  }
+  const { data: dataF, isLoading } = useQuery({
+    queryKey: [REACT_QUERY.COUNTRIES],
+    queryFn: async () => {
+      const res = await fetchCountryData();
+      return handleQueryResponse(res);
+    },
+  });
 
   const handleSubmit = (values: any) => {
-    // console.log("/ Data received/", values);
     const data = setDataInQueryParams(values);
-    // console.log("/ Encrypted/", data);
     navigate(`${ROUTE_CONSTANTS.AUCTION}?q=${data}`);
   };
 
@@ -108,7 +103,7 @@ const HeroSearchBox: React.FC = () => {
                         <ReactSelectDropdown
                           noDataRenderer={NoDataRendererDropdown}
                           itemRenderer={ItemRenderer}
-                          loading={loading}
+                          loading={isLoading}
                           options={dataF}
                           placeholder={"Neighborhood, City or State"}
                           customClass="w-full "
@@ -152,8 +147,10 @@ const HeroSearchBox: React.FC = () => {
           {STRING_DATA.POPULER_CITIES}
         </label>
         <div className="flex flex-wrap gap-2">
-          {POPULER_CITIES.map((item) => (
-            <CustomBadge label={item.label} />
+          {POPULER_CITIES.map((item, index) => (
+            <div key={index}>
+              <CustomBadge label={item.label} />
+            </div>
           ))}
         </div>
       </div>

@@ -40,7 +40,7 @@ const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
     <input
       className={`${customClass || "form-controls"} `}
       type={type}
-      id={id}
+      id={id ?? name}
       name={name || field.name}
       onChange={
         (onChange as React.ChangeEventHandler<HTMLInputElement>) ||
@@ -59,7 +59,7 @@ const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
   const renderTextarea = () => (
     <textarea
       className={`${customClass || "form-controls"} `}
-      id={id}
+      id={id ?? name}
       name={name || field.name}
       onChange={
         (onChange as React.ChangeEventHandler<HTMLTextAreaElement>) ||

@@ -1,3 +1,4 @@
+import { IActionResponse } from "../interfaces/RequestInteface";
 import { STORE_KEY } from "../zustandStore/store";
 
 export const getDataFromLocalStorage = () => {
@@ -19,3 +20,25 @@ export const getDataFromQueryParams = (encodedString:string) =>  {
   const data = JSON.parse(atob(encodedString));
   return data;
 }
+
+export const handleQueryResponse = (actionResponse: IActionResponse) => {
+  const { message } = actionResponse?.data ?? {};
+  if (message) {
+    console.log(message);
+    throw new Error(message);
+  } else {
+    return actionResponse;
+  }
+};
+
+export const handleOnSettled = (actionResponse: IActionResponse) => {
+  const { message } = actionResponse?.data ?? {};
+  if (message) {
+    if (actionResponse?.fail) {
+      actionResponse.fail(actionResponse?.data?.response);
+      return;
+    }
+  } else {
+    actionResponse.success(actionResponse?.data);
+  }
+};

@@ -104,8 +104,8 @@ const FindAuction: React.FC = () => {
                   <div className={gridElementClass()}>
                     <TextField
                       type="text"
-                      name="category"
-                      label="Category"
+                      name={"category"}
+                      label={"Category"}
                       value={values.category}
                       placeholder="Enter category"
                     />
@@ -165,7 +165,9 @@ const FindAuction: React.FC = () => {
       <CustomModal openModal={openModal}>
         <div className="w-full flex flex-col gap-4">{renderForm()}</div>
       </CustomModal>
-      <div className="bg-[#e3e3e3] p-4">{renderData()}</div>
+      <div className="bg-[#e3e3e3] sticky left-0 right-0 top-0 p-4">
+        {renderData()}
+      </div>
     </>
   );
 };

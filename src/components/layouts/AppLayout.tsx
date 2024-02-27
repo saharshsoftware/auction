@@ -23,7 +23,7 @@ const AppLayout = (props: { children: React.ReactNode }) => {
     }
     return (
       <div
-        className={`mt-16 ${
+        className={`${
           isAuthRoute ? "flex-1 flex items-center justify-center" : ""
         } `}
       >
