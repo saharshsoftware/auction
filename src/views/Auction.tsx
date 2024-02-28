@@ -1,19 +1,18 @@
 import React from "react";
-import FindAuction from "../components/molecules/FindAuction";
 import ShowAuctionList from "../components/molecules/ShowAuctionList";
+import AuctionLayout from "../components/layouts/AuctionLayout";
 
 const Auction: React.FC = () => {
   return (
     <>
-      <FindAuction />
-      <div className="common-section">
+      <AuctionLayout>
         <div className="grid grid-cols-12 gap-4 py-4">
           <div className="lg:col-span-8 col-span-full">
             <ShowAuctionList />
           </div>
           <div className="lg:col-span-4 col-span-full">Recent Data</div>
         </div>
-      </div>
+      </AuctionLayout>
     </>
   );
 };

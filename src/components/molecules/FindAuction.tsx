@@ -1,6 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { ERROR_MESSAGE, STRING_DATA } from "../../shared/Constants";
+import {
+  ERROR_MESSAGE,
+  RANGE_PRICE,
+  STRING_DATA,
+} from "../../shared/Constants";
 import { useLocation } from "react-router-dom";
 
 import { getDataFromQueryParams } from "../../shared/Utilies";
@@ -27,21 +31,14 @@ const FindAuction: React.FC = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const { showModal, openModal, hideModal } = useModal();
-  const [initialValueData, setInitialValueData] = useState<any>(
-    getDataFromQueryParams(searchParams.get("q") ?? "")
+  const [initialValueData] = useState<any>(
+    structuredClone(getDataFromQueryParams(searchParams.get("q") ?? ""))
   );
 
   const [isMobileView, setIsMobileView] = useState({
     mobileView: false,
     isOpenTopbar: false,
   });
-
-  const fillForm = () => {
-    const urlData = getDataFromQueryParams(searchParams.get("q") ?? "");
-    if (urlData) {
-      setInitialValueData({ ...urlData });
-    }
-  };
 
   const handleSubmit = () => {
     console.log("asfasd");
@@ -54,7 +51,6 @@ const FindAuction: React.FC = () => {
   };
   useEffect(() => {
     handleResize(); // Initial check on component mount
-    fillForm();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -130,11 +126,13 @@ const FindAuction: React.FC = () => {
                   </div>
                   <div className={gridElementClass()}>
                     <TextField
-                      type="text"
+                      type="range"
                       name="price"
                       label="Price"
                       value={values.price}
                       placeholder="Enter price"
+                      min={RANGE_PRICE.MIN}
+                      max={RANGE_PRICE.MAX}
                     />
                   </div>
                 </div>

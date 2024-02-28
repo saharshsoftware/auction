@@ -101,11 +101,30 @@ const Navbar: React.FC = () => {
     return null;
   };
 
+  const getRequirecRoute = () => {
+    const data = location.pathname.split("/");
+    const updateRoute = data.slice(0, data?.length).join("/");
+    return updateRoute;
+  };
+
+  const setNavbarPositionClass = () => {
+    const currentRoute = getRequirecRoute();
+    if (
+      currentRoute ||
+      location.pathname === ROUTE_CONSTANTS.AUCTION ||
+      currentRoute ||
+      location.pathname === ROUTE_CONSTANTS.AUCTION_DETAIL
+    ) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <>
       <div
         className={`navbar ${
-          location?.pathname === ROUTE_CONSTANTS.AUCTION ? "" : "fixed top-0"
+          setNavbarPositionClass() ? "" : "fixed top-0"
         }  bg-white z-50 shadow border-b-2`}
       >
         <em className="sticky top-0 left-0 right-0">{getWaveSvg()}</em>
