@@ -3,5 +3,7 @@ export const ROUTE_CONSTANTS = {
   LOGIN: "/login",
   REGISTER: "/register",
   AUCTION: "/auctions/find-auctions",
-  AUCTION_DETAIL: "/auction/find-auction/detail"
+  AUCTION_DETAIL: "/auction/find-auction/detail",
+  PROFILE: "/profile",
+  SETTINGS: "/settings"
 }

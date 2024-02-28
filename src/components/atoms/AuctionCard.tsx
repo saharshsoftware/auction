@@ -18,7 +18,7 @@ const AuctionCard: React.FC<IAuctionCard> = (props) => {
           >
             {item?.title}
           </h2>
-          <span className="text-green-600 font-bold text-2xl">
+          <span className="custom-prize-color font-bold text-2xl">
             &#8377; {formatPrice(item?.price)}
           </span>
         </div>

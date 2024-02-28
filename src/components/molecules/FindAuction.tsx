@@ -133,6 +133,7 @@ const FindAuction: React.FC = () => {
                       placeholder="Enter price"
                       min={RANGE_PRICE.MIN}
                       max={RANGE_PRICE.MAX}
+                      customClass={"custom-range-class"}
                     />
                   </div>
                 </div>

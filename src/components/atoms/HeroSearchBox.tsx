@@ -38,7 +38,7 @@ const initialValues = {
   category: STRING_DATA.EMPTY,
   location: STRING_DATA.EMPTY,
   bank: STRING_DATA.EMPTY,
-  price: STRING_DATA.EMPTY,
+  price: "5000" || STRING_DATA.EMPTY,
 };
 
 const gridElementClass = () => "lg:col-span-6 col-span-full";
@@ -120,7 +120,7 @@ const HeroSearchBox: React.FC = () => {
                     </Field>
                   </TextField>
                 </div>
-                <div className={gridElementClass()}>
+                <div className={"col-span-full"}>
                   <TextField
                     type="text"
                     name="bank"
@@ -128,7 +128,7 @@ const HeroSearchBox: React.FC = () => {
                     placeholder="Enter bank"
                   />
                 </div>
-                <div className={gridElementClass()}>
+                <div className={"col-span-full"}>
                   <TextField
                     type="range"
                     name="price"
@@ -136,6 +136,7 @@ const HeroSearchBox: React.FC = () => {
                     placeholder="Enter price"
                     min={RANGE_PRICE.MIN}
                     max={RANGE_PRICE.MAX}
+                    customClass={"custom-range-class"}
                   />
                 </div>
 

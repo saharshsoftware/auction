@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { STRING_DATA } from "../../shared/Constants";
 import ActionButton from "../atoms/ActionButton";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTE_CONSTANTS } from "../../shared/Routes";
+import useCurrentRouteWithoutId from "../../hooks/useCurrentRouteWithoutId";
 
 const getWaveSvg = () => {
   return (
@@ -18,7 +19,7 @@ const getWaveSvg = () => {
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const currentRoute = useCurrentRouteWithoutId();
   const [isMobileView, setIsMobileView] = useState({
     mobileView: false,
     isOpenTopbar: false,
@@ -27,7 +28,7 @@ const Navbar: React.FC = () => {
   const handleResize = () => {
     setIsMobileView((prev) => ({
       ...prev,
-      mobileView: window.innerWidth < 768,
+      mobileView: window.innerWidth < 1024,
     })); // Assuming mobile view below 768px width
   };
   useEffect(() => {
@@ -101,23 +102,11 @@ const Navbar: React.FC = () => {
     return null;
   };
 
-  const getRequirecRoute = () => {
-    const data = location.pathname.split("/");
-    const updateRoute = data.slice(0, data?.length).join("/");
-    return updateRoute;
-  };
-
   const setNavbarPositionClass = () => {
-    const currentRoute = getRequirecRoute();
-    if (
-      currentRoute ||
-      location.pathname === ROUTE_CONSTANTS.AUCTION ||
-      currentRoute ||
-      location.pathname === ROUTE_CONSTANTS.AUCTION_DETAIL
-    ) {
-      return true;
+    if (currentRoute === ROUTE_CONSTANTS.DASHBOARD) {
+      return false;
     }
-    return false;
+    return true;
   };
 
   return (

@@ -12,7 +12,9 @@ export const STRING_DATA = {
   UPDATE: "Update",
   CANCEL: "Cancel",
   AUCTION_DETAIL: "Auction Detail",
-  ID_SLASH: "/:id"
+  ID_SLASH: "/:id",
+  PROFILE: "Profile",
+  SETTINGS: "Settings"
 }
 
 export const INPUT_TYPE = {
