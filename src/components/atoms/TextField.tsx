@@ -1,7 +1,9 @@
 import { ErrorMessage, FieldHookConfig, useField } from "formik";
+import { INPUT_TYPE } from "../../shared/Constants";
+import { formatPrice } from "../../shared/Utilies";
 
 interface ICustomInput {
-  type?: "text" | "password" | "number" | "textarea";
+  type?: "text" | "password" | "number" | "textarea" | "range";
   placeholder?: string;
   name?: string;
   id?: string;
@@ -15,6 +17,8 @@ interface ICustomInput {
   children?: React.ReactNode;
   hasChildren?: boolean;
   value?: string;
+  min?: string;
+  max?: string;
 }
 
 const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
@@ -33,6 +37,8 @@ const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
     children,
     hasChildren,
     value,
+    min,
+    max,
   } = props;
   const [field] = useField(props);
 
@@ -53,6 +59,8 @@ const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
       onBlur={
         (onBlur as React.FocusEventHandler<HTMLInputElement>) || field.onBlur
       }
+      min={min}
+      max={max}
     />
   );
 
@@ -89,14 +97,22 @@ const TextField: React.FC<FieldHookConfig<string> & ICustomInput> = (props) => {
     return renderInputField();
   };
 
+  const showPriceValue = () =>
+    name === "price" && type === INPUT_TYPE.RANGE && field.value;
+
   return (
     <div className="flex flex-col gap-2 w-full items-start">
       {label ? (
         <label
           htmlFor={name}
-          className="block text-sm font-medium text-gray-900"
+          className={`flex justify-between items-center w-full   text-gray-900 `}
         >
-          {label}
+          <span className="text-sm">{label} </span>
+          {showPriceValue() ? (
+            <span className="font-bold text-lg">
+              &#8377; {formatPrice(field.value)}
+            </span>
+          ) : null}
         </label>
       ) : null}
 

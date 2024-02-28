@@ -15,6 +15,19 @@ export const STRING_DATA = {
   ID_SLASH: "/:id"
 }
 
+export const INPUT_TYPE = {
+  TEXT:"text",
+  TEXT_AREA: "textarea",
+  RANGE: "range",
+  PASSWORD: "password",
+  NUMBER: "number"
+}
+
+export const RANGE_PRICE = {
+  MIN: "0",
+  MAX: "100000"
+}
+
 export const ERROR_MESSAGE = {
   EMAIL_REQUIRED: "Email is required",
   PASSWORD_REQUIRED: "Password is required",
@@ -104,70 +117,70 @@ export const SAMPLE_PLOT = [
     id: 1,
     title: "Luxury Apartment in Manhattan",
     desc: "Luxurious apartment with stunning views Luxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning views",
-    price: "1,500,000",
+    price: "1465546",
     date: "10 February"
   },
   {
     id: 2,
     title: "Cozy Cottage in the Countryside",
     desc: "Quaint cottage surrounded by nature",
-    price: "350,000",
+    price: "142546234234234",
     date: "15 April"
   },
   {
     id: 3,
     title: "Modern Condo in Downtown",
     desc: "Chic condo in the heart of the city",
-    price: "800,000",
+    price: "234234234",
     date: "5 May"
   },
   {
     id: 4,
     title: "Beachfront Villa in Bali",
     desc: "Exquisite villa with private beach access",
-    price: "2,200,000",
+    price: "234234234",
     date: "20 July"
   },
   {
     id: 5,
     title: "Mountain Retreat in the Alps",
     desc: "Secluded retreat nestled in the mountains",
-    price: "1,000,000",
+    price: "234234234",
     date: "30 September"
   },
   {
     id: 6,
     title: "Historic Townhouse in London",
     desc: "Elegant townhouse with period features",
-    price: "1,800,000",
+    price: "234234234",
     date: "12 December"
   },
   {
     id: 7,
     title: "Riverside Cabin in the Woods",
     desc: "Rustic cabin overlooking a tranquil river",
-    price: "500,000",
+    price: "234234234",
     date: "8 August"
   },
   {
     id: 8,
     title: "Sky-High Penthouse in Dubai",
     desc: "Luxurious penthouse with panoramic city views",
-    price: "5,000,000",
+    price: "234234234",
     date: "25 October"
   },
   {
     id: 9,
     title: "Farmhouse with Vineyard in Tuscany",
     desc: "Idyllic farmhouse surrounded by vineyards",
-    price: "3,500,000",
+    price: "234234234",
     date: "3 March"
   },
   {
     id: 10,
     title: "Lakefront Retreat in Canada",
     desc: "Serenity awaits at this lakefront retreat",
-    price: "750,000",
+    price: "234234234",
     date: "18 November"
   }
 ];

@@ -42,3 +42,15 @@ export const handleOnSettled = (actionResponse: IActionResponse) => {
     actionResponse.success(actionResponse?.data);
   }
 };
+
+export const formatPrice = (price:any) => {
+  price = parseFloat(price);
+  if (isNaN(price)) {
+      return "Invalid price";
+  }  
+  const formattedPrice = price.toLocaleString('en-US', {
+    style: 'decimal',
+    // minimumFractionDigits: 2
+  });
+  return formattedPrice;
+}

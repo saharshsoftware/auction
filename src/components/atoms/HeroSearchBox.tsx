@@ -9,6 +9,7 @@ import {
   CATEGORIES,
   ERROR_MESSAGE,
   POPULER_CITIES,
+  RANGE_PRICE,
   REACT_QUERY,
   STRING_DATA,
 } from "../../shared/Constants";
@@ -29,8 +30,8 @@ const validationSchema = Yup.object({
   bank: Yup.string().trim().required(ERROR_MESSAGE.BANK_REQUIRED),
   price: Yup.number()
     .required(ERROR_MESSAGE.PRICE_REQUIRED)
-    .positive(ERROR_MESSAGE.PRICE_POSITIVE)
-    .integer(ERROR_MESSAGE.PRICE_INTEGER),
+    .integer(ERROR_MESSAGE.PRICE_INTEGER)
+    .positive(ERROR_MESSAGE.PRICE_POSITIVE),
 });
 
 const initialValues = {
@@ -71,7 +72,7 @@ const HeroSearchBox: React.FC = () => {
           validationSchema={validationSchema}
           wantToUseFormikEvent={true}
         >
-          {({ setFieldValue }: any) => (
+          {({ values, setFieldValue }: any) => (
             <Form>
               <div className="grid gap-4 grid-cols-12 w-full ">
                 <div className={gridElementClass()}>
@@ -129,10 +130,12 @@ const HeroSearchBox: React.FC = () => {
                 </div>
                 <div className={gridElementClass()}>
                   <TextField
-                    type="text"
+                    type="range"
                     name="price"
                     label="Price"
                     placeholder="Enter price"
+                    min={RANGE_PRICE.MIN}
+                    max={RANGE_PRICE.MAX}
                   />
                 </div>
 
