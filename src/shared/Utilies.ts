@@ -1,3 +1,4 @@
+import moment from "moment";
 import { IActionResponse } from "../interfaces/RequestInteface";
 import { STORE_KEY } from "../zustandStore/store";
 
@@ -52,5 +53,8 @@ export const formatPrice = (price:any) => {
     style: 'decimal',
     // minimumFractionDigits: 2
   });
-  return formattedPrice;
+  return `₹ ${formattedPrice}`;
 }
+
+export const formattedDate = (data:string) => moment(data).format("ll");
+export const formattedDateAndTime = (data:string) => moment(data).format("MMM Do YYYY, h:mm:ss A");

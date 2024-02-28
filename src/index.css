@@ -5,7 +5,7 @@
 :root {
   --brand-color: #0099FF;
   --btn-red: #DC3545;
-  --action-btn-color: #0B60B0;
+  --action-btn-color: #18535f;
   --badge-color: #d7dbe9;
   --button-hover-color: #5ca1e2;
 }
@@ -106,7 +106,7 @@ body :focus-within {
 }
 
 .common-section {
-  @apply lg:px-32 px-12
+  @apply lg:px-32 px-4
 }
 
 .custom-h2-class {
