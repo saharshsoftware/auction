@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import HeroSection from "../atoms/HeroSection";
 import { ROUTE_CONSTANTS } from "../../shared/Routes";
 import { AUTH_ROUTES } from "../../routes/AuthRoutes";
+import Footer from "../hoc/Footer";
 
 const AppLayout = (props: { children: React.ReactNode }) => {
   const { children } = props;
@@ -37,6 +38,7 @@ const AppLayout = (props: { children: React.ReactNode }) => {
         <Navbar />
 
         {renderChildren()}
+        <Footer />
       </div>
     </>
   );

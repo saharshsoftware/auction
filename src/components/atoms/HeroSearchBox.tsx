@@ -60,7 +60,7 @@ const HeroSearchBox: React.FC = () => {
 
   return (
     <>
-      <div className="bg-white p-4 rounded-lg flex flex-col gap-4 relative pb-12 shadow border">
+      <div className="bg-white p-4 rounded-lg flex flex-col gap-4 relative pb-12 shadow shadow-brand-color border">
         <CustomFormikForm
           initialValues={initialValues}
           handleSubmit={handleSubmit}
@@ -136,7 +136,7 @@ const HeroSearchBox: React.FC = () => {
                   <ActionButton
                     isSubmit={true}
                     text={STRING_DATA.SEARCH.toUpperCase()}
-                    customClass="w-full rounded-full btn-lg px-12"
+                    customClass={"rounded-full btn-lg px-12 py-4 "}
                   />
                 </div>
               </div>

@@ -5,7 +5,7 @@ import { STRING_DATA } from "../../shared/Constants";
 const HeroSection: React.FC = () => {
   return (
     <div
-      className="hero min-h-[70vh]"
+      className="hero min-h-screen"
       style={{
         backgroundImage: `url(${waveImage})`,
       }}

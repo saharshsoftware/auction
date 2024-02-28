@@ -42,8 +42,8 @@ const ActionButton: React.FC<IActionButton> = (props) => {
         type={isSubmit ? "submit" : "button"}
         disabled={disabled || isLoading}
         className={`${disabled ? "custom-btn-disabled" : ""} ${
-          customClass ?? ""
-        } btn custom-action-button-class ${getButtonClass()}`}
+          customClass ?? "custom-action-button-class"
+        } btn  ${getButtonClass()}`}
         onClick={onclick}
       >
         {icon ? icon : null}

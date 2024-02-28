@@ -15,4 +15,9 @@ export const PUBLIC_ROUTES: IRouteInterface[] = [
     element: <Auction />,
     title: STRING_DATA.AUCTION,
   },
+  {
+    path: ROUTE_CONSTANTS.AUCTION_DETAIL + STRING_DATA.ID_SLASH,
+    element: <Auction />,
+    title: STRING_DATA.AUCTION_DETAIL,
+  },
 ];
