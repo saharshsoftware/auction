@@ -19,7 +19,7 @@ const ReactSelectDropdown: React.FC<IReactSelectDropdown> = (props) => {
       <div style={{ width: "100%" }}>
         <Select
           multi={false}
-          className={`rounded select-dropdown ${customClass ?? ""}`}
+          className={`custom-select-dropdown ${customClass ?? ""}`}
           options={options}
           loading={loading}
           disabled={loading}

@@ -72,7 +72,7 @@ const HeroSearchBox: React.FC = () => {
           validationSchema={validationSchema}
           wantToUseFormikEvent={true}
         >
-          {({ values, setFieldValue }: any) => (
+          {({ setFieldValue }: any) => (
             <Form>
               <div className="grid gap-4 grid-cols-12 w-full ">
                 <div className={gridElementClass()}>
