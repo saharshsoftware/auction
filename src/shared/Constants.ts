@@ -27,6 +27,8 @@ export const STRING_DATA = {
   EMD_SUBMISSION: "EMD submission",
   AUCTION_START_D_AND_T: "Auction Start Date & Time",
   AUCTION_END_D_AND_T: "Auction End Date & Time",
+  SIMILER_PROPERTIES: "Similer Properties",
+  TOP_CITY: "Top City"
 }
 
 export const INPUT_TYPE = {
@@ -130,7 +132,7 @@ export const SAMPLE_PLOT = [
   {
     id: 1,
     title: "Luxury Apartment in Manhattan",
-    desc: "Luxurious apartment with stunning views Luxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning views",
+    desc: "Luxurious apartment with stunning views Luxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious apartment with stunning viewsLuxurious ",
     price: "1465546",
     bank_name: "IDFC FIRST Bank ",
     date: "2024-02-28T12:07:32.466Z",
@@ -225,3 +227,17 @@ export const SAMPLE_PLOT = [
 export const REACT_QUERY = {
   COUNTRIES: "Countries"
 }
+
+export const SAMPLE_CITY = [
+  { id: 1, label: 'Delhi', value: 'Delhi' },
+  { id: 2, label: 'Bangalore', value: 'Bangalore' },
+  { id: 3, label: 'Hyderabad', value: 'Hyderabad' },
+  { id: 4, label: 'Chennai', value: 'Chennai' },
+  { id: 5, label: 'Kolkata', value: 'Kolkata' },
+  { id: 6, label: 'Pune', value: 'Pune' },
+  { id: 7, label: 'Ahmedabad', value: 'Ahmedabad' },
+  { id: 8, label: 'Jaipur', value: 'Jaipur' },
+  { id: 9, label: 'Lucknow', value: 'Lucknow' },
+  { id: 10, label: 'Mumbai', value: 'Mumbai' },  
+];
+

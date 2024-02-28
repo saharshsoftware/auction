@@ -146,8 +146,8 @@ const FindAuction: React.FC = () => {
                     {isMobileView.mobileView ? (
                       <ActionButton
                         text={STRING_DATA.CANCEL.toUpperCase()}
-                        customClass=""
                         onclick={hideModal}
+                        isActionButton={false}
                       />
                     ) : null}
                   </div>
@@ -164,7 +164,7 @@ const FindAuction: React.FC = () => {
       <CustomModal openModal={openModal}>
         <div className="w-full flex flex-col gap-4">{renderForm()}</div>
       </CustomModal>
-      <div className="bg-[#e3e3e3] sticky left-0 right-0 top-0 p-4">
+      <div className="bg-[#e3e3e3] sticky left-0 right-0 top-0 p-4 shadow">
         {renderData()}
       </div>
     </>

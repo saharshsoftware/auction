@@ -12,12 +12,7 @@ const AuctionCard: React.FC<IAuctionCard> = (props) => {
     <>
       <div className="flex flex-col gap-4 p-4 border rounded shadow w-full min-h-40">
         <div className="flex lg:flex-row flex-col gap-4 justify-between items-start">
-          <h2
-            className="custom-h2-class line-clamp-1 cursor-pointer"
-            onClick={() => handleClick(item)}
-          >
-            {item?.title}
-          </h2>
+          <h2 className="custom-h2-class line-clamp-1">{item?.title}</h2>
           <span className="custom-prize-color font-bold text-2xl">
             {formatPrice(item?.price)}
           </span>
@@ -41,7 +36,11 @@ const AuctionCard: React.FC<IAuctionCard> = (props) => {
               </span>
             ) : null}
           </div>
-          <ActionButton text="View Auction" customClass="lg:w-fit w-full" />
+          <ActionButton
+            text="View Auction"
+            customClass="lg:w-fit w-full"
+            onclick={() => handleClick(item)}
+          />
         </div>
       </div>
     </>
