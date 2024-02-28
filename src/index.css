@@ -111,3 +111,7 @@ body :focus-within {
 .custom-h2-class {
   @apply text-xl font-bold
 }
+
+.active-badge-class {
+  @apply bg-neutral text-neutral-content
+}

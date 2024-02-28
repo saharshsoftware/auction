@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ActionButton from "./ActionButton";
 import CustomBadge from "./CustomBadge";
 import ReactSelectDropdown from "./ReactSelectDropdown";
@@ -44,7 +44,7 @@ const gridElementClass = () => "lg:col-span-6 col-span-full";
 
 const HeroSearchBox: React.FC = () => {
   const navigate = useNavigate();
-
+  const [activeBadgeData, setActiveBadgeData] = useState(POPULER_CITIES?.[0]);
   const { data: dataF, isLoading } = useQuery({
     queryKey: [REACT_QUERY.COUNTRIES],
     queryFn: async () => {
@@ -56,6 +56,10 @@ const HeroSearchBox: React.FC = () => {
   const handleSubmit = (values: any) => {
     const data = setDataInQueryParams(values);
     navigate(`${ROUTE_CONSTANTS.AUCTION}?q=${data}`);
+  };
+
+  const handleBadgeClick = (data: any) => {
+    setActiveBadgeData(data);
   };
 
   return (
@@ -148,9 +152,12 @@ const HeroSearchBox: React.FC = () => {
         </label>
         <div className="flex flex-wrap gap-2">
           {POPULER_CITIES.map((item, index) => (
-            <div key={index}>
-              <CustomBadge label={item.label} />
-            </div>
+            <CustomBadge
+              key={index}
+              item={item}
+              activeBadge={activeBadgeData}
+              onclick={handleBadgeClick}
+            />
           ))}
         </div>
       </div>

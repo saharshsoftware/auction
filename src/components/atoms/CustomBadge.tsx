@@ -1,15 +1,23 @@
 import React from "react";
 
 interface ICustomBadge {
-  label: string;
+  index?: number;
+  activeBadge: any;
+  item: any;
   onclick?: (data?: any) => void;
 }
 
 const CustomBadge: React.FC<ICustomBadge> = (props) => {
-  const { label, onclick } = props;
+  const { index, item, onclick = () => {}, activeBadge } = props;
   return (
-    <div className="custom-badge-class" onClick={onclick}>
-      {label}
+    <div
+      key={index}
+      className={`custom-badge-class ${
+        activeBadge?.id === item?.id ? "active-badge-class" : ""
+      }`}
+      onClick={() => onclick(item)}
+    >
+      {item?.label}
     </div>
   );
 };

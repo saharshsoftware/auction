@@ -7,7 +7,7 @@ export const STRING_DATA = {
   CREATE_ACCOUNT: "Create Acount",
   SEARCH: "Search",
   TAG_LINE: "Find Auctions Near You",
-  POPULER_CITIES: "Populer Cities",
+  POPULER_CITIES: "Popular Cities",
   AUCTION: "Auction",
   UPDATE: "Update",
   CANCEL: "Cancel",
@@ -72,22 +72,27 @@ export const CATEGORIES = [
 
 export const POPULER_CITIES = [
   {
+    id: 1,
     label:"Jaipur",
     value: "Jaiput"
   },
   {
+    id: 2,
     label:"Mumbai",
     value: "Mumbai"
   },
   {
+    id: 3,
     label:"Delhi",
     value: "Delhi"
   },
   {
+    id: 4,
     label:"Bangalore",
     value: "Bangalore"
   },
   {
+    id: 5,
     label:"Chennai",
     value: "Chennai"
   }
