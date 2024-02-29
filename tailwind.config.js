@@ -6,7 +6,22 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'brand-color': 'var(--brand-color)',
+        'btn-red': 'var(--btn-red)',
+        'action-btn': 'var(--action-btn-color)'
+      },
+      container: {
+        center: true,
+      },
+      screens: {
+        "772px": "772"
+      },
+      backgroundImage: {
+        'wave-image': "url('@/assets/wave.svg')", // Adjust the path as per your project structure
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
