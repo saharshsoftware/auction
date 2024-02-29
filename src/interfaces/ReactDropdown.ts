@@ -7,4 +7,5 @@ export interface IReactSelectDropdown {
   onChange?: (event: any) => void;
   name?: string;
   placeholder?: string;
+  defaultValue?: any;
 }

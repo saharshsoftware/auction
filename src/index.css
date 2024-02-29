@@ -6,8 +6,9 @@
   --brand-color: #0099FF;
   --btn-red: #DC3545;
   --action-btn-color: #18535f;
+  --secondary-color: #18535f;
   --badge-color: #d7dbe9;
-  --button-hover-color: #5ca1e2;
+  --button-hover-color: #667085;
 }
 
 body {
@@ -127,4 +128,12 @@ body :focus-within {
 
 .custom-prize-color {
   @apply text-green-500
+}
+
+.custom-common-header-class {
+  @apply bg-[var(--secondary-color)] text-white px-4 py-2 rounded-t-md
+}
+
+.custom-common-header-detail-class {
+  @apply w-full bg-gray-100 border border-t-2 shadow
 }

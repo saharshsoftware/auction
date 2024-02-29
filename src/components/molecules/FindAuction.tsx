@@ -1,22 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import {
+  CATEGORIES,
   ERROR_MESSAGE,
   RANGE_PRICE,
+  REACT_QUERY,
   STRING_DATA,
 } from "../../shared/Constants";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { getDataFromQueryParams } from "../../shared/Utilies";
+import {
+  getDataFromQueryParams,
+  handleQueryResponse,
+  setDataInQueryParams,
+} from "../../shared/Utilies";
 import useModal from "../../hooks/useModal";
 import CustomModal from "../atoms/CustomModal";
 import CustomFormikForm from "../atoms/CustomFormikForm";
-import { Form } from "formik";
+import { Field, Form } from "formik";
 import TextField from "../atoms/TextField";
 import ActionButton from "../atoms/ActionButton";
 import * as Yup from "yup";
+import ReactSelectDropdown from "../atoms/ReactSelectDropdown";
+import {
+  ItemRenderer,
+  NoDataRendererDropdown,
+} from "../atoms/NoDataRendererDropdown";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCountryData } from "../../services/landingPage";
 
-const gridElementClass = () => "lg:col-span-3 md:col-span-6 col-span-full";
+const gridElementClass = () => "lg:col-span-3  col-span-full";
 const validationSchema = Yup.object({
   category: Yup.string().trim().required(ERROR_MESSAGE.CATEGORY_REQUIRED),
   location: Yup.string().trim().required(ERROR_MESSAGE.LOCATION_REQUIRED),
@@ -29,9 +42,18 @@ const validationSchema = Yup.object({
 
 const FindAuction: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const { showModal, openModal, hideModal } = useModal();
-  const [initialValueData] = useState<any>(
+  const { data: countriesData, isLoading } = useQuery({
+    queryKey: [REACT_QUERY.COUNTRIES],
+    queryFn: async () => {
+      const res = await fetchCountryData();
+      return handleQueryResponse(res);
+    },
+    staleTime: 5 * 60 * 1000, // 5 min
+  });
+  const [initialValueData, setInitialValueData] = useState<any>(
     structuredClone(getDataFromQueryParams(searchParams.get("q") ?? ""))
   );
 
@@ -40,17 +62,29 @@ const FindAuction: React.FC = () => {
     isOpenTopbar: false,
   });
 
-  const handleSubmit = () => {
-    console.log("asfasd");
+  const handleSubmit = (values: any) => {
+    const data = setDataInQueryParams(values);
+    navigate(`${location.pathname}?q=${data}`);
+    hideModal?.();
   };
   const handleResize = () => {
     setIsMobileView((prev) => ({
       ...prev,
-      mobileView: window.innerWidth < 768,
-    })); // Assuming mobile view below 768px width
+      mobileView: window.innerWidth < 1024,
+    }));
   };
+
   useEffect(() => {
-    handleResize(); // Initial check on component mount
+    if (searchParams?.get("q")) {
+      const updateFormData = structuredClone(
+        getDataFromQueryParams(searchParams.get("q") ?? "")
+      );
+      setInitialValueData(updateFormData);
+    }
+  }, [searchParams?.get("q")]);
+
+  useEffect(() => {
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -75,6 +109,21 @@ const FindAuction: React.FC = () => {
     );
   };
 
+  const getSelectedCategory = () => {
+    return [
+      CATEGORIES?.find((item) => item?.name === initialValueData?.category),
+    ];
+  };
+
+  const getSelectedLocation = () => {
+    const country = countriesData as any;
+    if (country?.length) {
+      return [
+        country?.find((item: any) => item?.name === initialValueData?.location),
+      ];
+    }
+    return [];
+  };
   const renderForm = () => {
     return (
       <>
@@ -89,7 +138,7 @@ const FindAuction: React.FC = () => {
           validationSchema={validationSchema}
           wantToUseFormikEvent={true}
         >
-          {({ values }: any) => (
+          {({ values, setFieldValue }: any) => (
             <Form>
               <div
                 className={`flex ${
@@ -99,21 +148,50 @@ const FindAuction: React.FC = () => {
                 <div className="grid gap-4 grid-cols-12 w-full ">
                   <div className={gridElementClass()}>
                     <TextField
-                      type="text"
+                      label={"Categories"}
                       name={"category"}
-                      label={"Category"}
-                      value={values.category}
-                      placeholder="Enter category"
-                    />
+                      hasChildren={true}
+                    >
+                      <Field name="category">
+                        {() => (
+                          <ReactSelectDropdown
+                            defaultValue={getSelectedCategory()}
+                            noDataRenderer={NoDataRendererDropdown}
+                            itemRenderer={ItemRenderer}
+                            options={CATEGORIES}
+                            placeholder={"Category"}
+                            customClass="w-full "
+                            onChange={(e) => {
+                              setFieldValue("category", e?.[0]?.name);
+                            }}
+                          />
+                        )}
+                      </Field>
+                    </TextField>
                   </div>
                   <div className={gridElementClass()}>
                     <TextField
-                      type="text"
-                      name="location"
-                      label="Location"
-                      value={values.location}
-                      placeholder="Enter location"
-                    />
+                      label={"Location (City & State)"}
+                      name={"location"}
+                      hasChildren={true}
+                    >
+                      <Field name="location">
+                        {() => (
+                          <ReactSelectDropdown
+                            noDataRenderer={NoDataRendererDropdown}
+                            itemRenderer={ItemRenderer}
+                            defaultValue={getSelectedLocation()}
+                            loading={isLoading}
+                            options={countriesData}
+                            placeholder={"Neighborhood, City or State"}
+                            customClass="w-full "
+                            onChange={(e) => {
+                              setFieldValue("location", e?.[0]?.name);
+                            }}
+                          />
+                        )}
+                      </Field>
+                    </TextField>
                   </div>
                   <div className={gridElementClass()}>
                     <TextField

@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
               className="text-xl font-bold cursor-pointer "
               onClick={() => navigate(ROUTE_CONSTANTS.DASHBOARD)}
             >
-              {STRING_DATA.BRAND_NAME}
+              {STRING_DATA.BRAND_NAME.toUpperCase()}
             </div>
           </div>
           <div className="lg:flex hidden items-center gap-8">

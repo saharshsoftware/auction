@@ -1,3 +1,5 @@
+import { ROUTE_CONSTANTS } from "./Routes"
+
 export const STRING_DATA = {
   EMPTY: "",
   LOGIN: "Log in",
@@ -58,13 +60,23 @@ export const ERROR_MESSAGE = {
 export const NAV_LINKS = [
   {
     id: 1,
-    label: "Home",
-    path: ""
+    label: STRING_DATA.PROFILE,
+    path: ROUTE_CONSTANTS.PROFILE
   },
   {
     id: 2,
-    label: "Contact Us",
-    path: ""
+    label: STRING_DATA.SETTINGS,
+    path: ROUTE_CONSTANTS.SETTINGS
+  },
+  {
+    id: 3,
+    label: STRING_DATA.LOGIN,
+    path: ROUTE_CONSTANTS.LOGIN
+  },
+  {
+    id: 4,
+    label: STRING_DATA.REGISTER,
+    path: ROUTE_CONSTANTS.REGISTER
   },
 ] 
 

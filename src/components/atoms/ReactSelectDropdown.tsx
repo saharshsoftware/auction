@@ -12,6 +12,7 @@ const ReactSelectDropdown: React.FC<IReactSelectDropdown> = (props) => {
     name = "",
     onChange = () => {},
     placeholder,
+    defaultValue,
   } = props;
 
   return (
@@ -28,7 +29,7 @@ const ReactSelectDropdown: React.FC<IReactSelectDropdown> = (props) => {
           labelField="name"
           valueField="id"
           searchable={true}
-          values={[]}
+          values={defaultValue ?? []}
           dropdownHandle={false}
           onChange={onChange}
           placeholder={placeholder}

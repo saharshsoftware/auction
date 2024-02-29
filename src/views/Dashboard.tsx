@@ -1,7 +1,6 @@
-import React from "react";
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   return (
-    <>
+    <div className="py-4">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, dolorem
         saepe. Nobis saepe magni ab ad sit recusandae blanditiis ea eum
@@ -16,7 +15,7 @@ const Dashboard: React.FC = () => {
         repellendus tempora fugiat dolorum fuga dignissimos delectus unde! Ad
         amet expedita veritatis.
       </p>
-    </>
+    </div>
   );
 };
 

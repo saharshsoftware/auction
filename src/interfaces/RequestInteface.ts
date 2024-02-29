@@ -5,7 +5,7 @@ export interface IRequest {
 }
 
 export interface IActionResponse {
-  data: any
-  success: (response: any) => void;
+  data?: any
+  success?: (response?: any) => void;
   fail?: (error: any) => void;
 }

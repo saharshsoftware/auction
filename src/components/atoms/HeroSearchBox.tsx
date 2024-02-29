@@ -52,6 +52,7 @@ const HeroSearchBox: React.FC = () => {
       const res = await fetchCountryData();
       return handleQueryResponse(res);
     },
+    staleTime: 5 * 60 * 1000, // 5 min
   });
 
   const handleSubmit = (values: any) => {
@@ -72,7 +73,7 @@ const HeroSearchBox: React.FC = () => {
           validationSchema={validationSchema}
           wantToUseFormikEvent={true}
         >
-          {({ setFieldValue }: any) => (
+          {({ setFieldValue, values }: any) => (
             <Form>
               <div className="grid gap-4 grid-cols-12 w-full ">
                 <div className={gridElementClass()}>
@@ -134,6 +135,7 @@ const HeroSearchBox: React.FC = () => {
                     name="price"
                     label="Price"
                     placeholder="Enter price"
+                    value={values.price}
                     min={RANGE_PRICE.MIN}
                     max={RANGE_PRICE.MAX}
                     customClass={"custom-range-class"}

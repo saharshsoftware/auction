@@ -7,7 +7,7 @@ import { ROUTE_CONSTANTS } from "../../shared/Routes";
 const ShowSimilerProperties = (props: { item: any; index: number }) => {
   const { item, index } = props;
   return (
-    <div className="w-full bg-gray-100 border border-t-2" key={index}>
+    <div className="custom-common-header-detail-class" key={index}>
       <div className="flex flex-col gap-4 p-4  w-full min-h-12">
         <h2 className="custom-h2-class line-clamp-1">{item?.title}</h2>
         {item?.date ? (
@@ -28,12 +28,12 @@ const RecentData: React.FC = () => {
     if (currentRoute === ROUTE_CONSTANTS.AUCTION) {
       return (
         <>
-          <div className="bg-base-300 text-black font-bold p-2 rounded-t-md">
+          <div className="custom-common-header-class">
             {STRING_DATA.TOP_CITY}
           </div>
           {SAMPLE_CITY.map((item, index) => {
             return (
-              <div className="w-full bg-gray-100 border border-t-2" key={index}>
+              <div className="custom-common-header-detail-class" key={index}>
                 <div className="flex flex-col gap-4 p-4  w-full min-h-12">
                   <h2 className="line-clamp-1">{item?.label}</h2>
                 </div>
@@ -45,7 +45,7 @@ const RecentData: React.FC = () => {
     }
     return (
       <>
-        <div className="bg-base-300 text-black font-bold p-2 rounded-t-md">
+        <div className="custom-common-header-class">
           {STRING_DATA.SIMILER_PROPERTIES}
         </div>
 
@@ -55,7 +55,7 @@ const RecentData: React.FC = () => {
       </>
     );
   };
-  return <div className="p-4">{renderChildren()}</div>;
+  return <>{renderChildren()}</>;
 };
 
 export default RecentData;

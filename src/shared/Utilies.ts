@@ -36,11 +36,11 @@ export const handleOnSettled = (actionResponse: IActionResponse) => {
   const { message } = actionResponse?.data ?? {};
   if (message) {
     if (actionResponse?.fail) {
-      actionResponse.fail(actionResponse?.data?.response);
+      actionResponse?.fail?.(actionResponse?.data?.response);
       return;
     }
   } else {
-    actionResponse.success(actionResponse?.data);
+    actionResponse?.success?.(actionResponse?.data);
   }
 };
 
